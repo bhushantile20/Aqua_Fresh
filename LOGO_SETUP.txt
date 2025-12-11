@@ -1,0 +1,21 @@
+LOGO INSTRUCTIONS
+==================
+
+The logo file from the uploaded image needs to be saved as:
+- logo.png
+
+Please save the AquaFresh Hydroponics logo image (with the leaf and water drop icon) 
+to the root directory as "logo.png"
+
+The logo should be:
+- PNG format with transparent background
+- Approximately 200x200 pixels or higher resolution
+- Contains the leaf and water drop icon
+- Includes "AquaFresh HYDROPONICS" text
+
+The HTML is already configured to use this logo file in:
+- Navigation bar (top-left)
+- Footer
+
+Alternatively, you can rename your logo file to "logo.png" and place it in the 
+e:\aqua_website\ directory.

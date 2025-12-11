@@ -1,0 +1,50 @@
+# How to Integrate "Why Choose Us" Section
+
+## Step 1: Add CSS to styles.css
+
+Open `styles.css` and add the CSS code from `why-choose-css.css` at the end of the file.
+
+## Step 2: Add HTML to index.html
+
+Open `index.html` and find this line (around line 268):
+```html
+        </section>
+
+        <!-- Testimonials Section -->
+```
+
+**Insert the HTML from `WHY_CHOOSE_US_HTML.txt` right before the Testimonials Section.**
+
+## Step 3: Verify Font Awesome
+
+Ensure this link is in your HTML `<head>`:
+```html
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+```
+
+## Features
+
+✅ 3-column responsive grid layout  
+✅ Circular farmer image in center  
+✅ 6 feature cards with green icons  
+✅ Smooth fade-in-up animations  
+✅ Scale-in animation for image  
+✅ Icon hover effects  
+✅ Green and white theme  
+✅ Fully responsive design  
+
+## File References
+
+- **WHY_CHOOSE_US_HTML.txt** - Complete HTML structure
+- **why-choose-css.css** - All CSS styling
+- **INTEGRATION_GUIDE.md** - This guide
+
+## Quick Integration
+
+1. Copy CSS from `why-choose-css.css`
+2. Paste into end of `styles.css`
+3. Copy HTML from `WHY_CHOOSE_US_HTML.txt`
+4. Paste into `index.html` after About section
+5. Save and refresh browser
+
+Done! Section will appear with animations.
