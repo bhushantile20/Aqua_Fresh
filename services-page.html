@@ -1,0 +1,1087 @@
+<!-- ============================================
+     SERVICES.HTML - Complete Services Page
+     ============================================ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Hydropokit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* ============================================
+           CSS VARIABLES - LIGHT MODE (DEFAULT)
+           ============================================ */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --accent-green: #22c55e;
+            --accent-green-dark: #16a34a;
+            --accent-green-light: #dcfce7;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ============================================
+           DARK MODE - OVERRIDE WITH DATA ATTRIBUTE
+           ============================================ */
+        body[data-theme="dark"] {
+            --bg-primary: #1a3a2a;
+            --bg-secondary: #0f2818;
+            --text-primary: #ffffff;
+            --text-secondary: #d1d5db;
+            --accent-green: #10b981;
+            --accent-green-dark: #059669;
+            --accent-green-light: rgba(16, 185, 129, 0.2);
+            --border-color: #2d5a47;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ============================================
+           BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        /* ============================================
+           HEADER & NAVIGATION
+           ============================================ */
+        header {
+            background-color: var(--bg-primary);
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        .header-top {
+            background-color: var(--bg-secondary);
+            padding: 0.75rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-top-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .header-top-left {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .header-top-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-top-item i {
+            color: var(--accent-green);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-green);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--accent-green);
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--text-primary);
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--bg-secondary);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent-green);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .theme-toggle {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--accent-green-dark);
+            transform: scale(1.05);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-green-dark) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: 5%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* ============================================
+           SERVICES SECTION
+           ============================================ */
+        .services {
+            padding: 5rem 2rem;
+            background-color: var(--bg-primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-green);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-link {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-link:hover {
+            gap: 1rem;
+        }
+
+        /* ============================================
+           WHY CHOOSE US SECTION
+           ============================================ */
+        .why-choose {
+            background: var(--bg-primary);
+            padding: 5rem 2rem;
+        }
+
+        .why-choose-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .why-choose-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #f97316;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 0.9rem;
+        }
+
+        .why-choose-label i {
+            font-size: 1.1rem;
+        }
+
+        .why-choose-title {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 1rem;
+        }
+
+        .why-choose-subtitle {
+            max-width: 650px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .why-choose-grid {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .why-choose-left,
+        .why-choose-right {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .feature-row {
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+
+        .feature-row.reverse {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        .feature-copy {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 0.4rem;
+        }
+
+        .feature-desc {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .feature-icon-box {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: var(--accent-green);
+            display: grid;
+            place-items: center;
+            color: #ffffff;
+            flex-shrink: 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .feature-row:hover .feature-icon-box {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 14px 26px rgba(0, 0, 0, 0.16);
+        }
+
+        .feature-icon-box i {
+            font-size: 1.35rem;
+        }
+
+        .why-choose-center {
+            display: flex;
+            justify-content: center;
+        }
+
+        .why-choose-avatar {
+            width: 320px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid var(--bg-primary);
+            box-shadow: 0 18px 38px rgba(0, 0, 0, 0.14);
+            position: relative;
+        }
+
+        .why-choose-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .why-choose-avatar .placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-green-dark), var(--accent-green));
+            display: grid;
+            place-items: center;
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 3rem 2rem 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-green);
+        }
+
+        .footer-newsletter {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .footer-newsletter input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px 0 0 8px;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .footer-newsletter button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .footer-newsletter button:hover {
+            background-color: var(--accent-green-dark);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 768px) {
+            .header-top-left {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: var(--bg-primary);
+                padding: 1rem;
+                gap: 1rem;
+                box-shadow: var(--shadow);
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav a {
+                padding: 0.75rem;
+                border-radius: 8px;
+                background-color: var(--bg-secondary);
+            }
+
+            .nav-right {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .social-icons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .theme-toggle {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .why-choose {
+                padding: 4rem 1.5rem;
+            }
+
+            .why-choose-title {
+                font-size: 2.1rem;
+            }
+
+            .why-choose-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .why-choose-left,
+            .why-choose-right {
+                gap: 1.75rem;
+            }
+
+            .feature-row.reverse {
+                text-align: left;
+            }
+
+            .feature-row.reverse {
+                flex-direction: row;
+            }
+
+            .why-choose-center {
+                order: -1;
+            }
+
+            .why-choose-avatar {
+                width: 260px;
+                border-width: 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+                min-height: 350px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .why-choose {
+                padding: 3.5rem 1rem;
+            }
+
+            .why-choose-title {
+                font-size: 1.85rem;
+            }
+
+            .why-choose-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .why-choose-avatar {
+                width: 220px;
+                border-width: 5px;
+            }
+
+            .feature-title {
+                font-size: 1rem;
+            }
+
+            .feature-desc {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+    <!-- ============================================
+         HEADER & NAVIGATION
+         ============================================ -->
+    <div class="header-top">
+        <div class="header-top-content">
+            <div class="header-top-left">
+                <div class="header-top-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>support@hydropokit.com</span>
+                </div>
+                <div class="header-top-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+91-9876-543-210</span>
+                </div>
+            </div>
+            <div class="social-icons">
+                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo" onclick="toggleTheme()" title="Click to toggle Dark/Light Mode">
+                <i class="fas fa-leaf"></i>
+                <span>Hydropokit</span>
+            </div>
+
+            <nav id="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="about-us.html">About</a>
+                <a href="team.html">Team</a>
+                <a href="faq.html">FAQ</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="contact-us.html">Contact</a>
+            </nav>
+
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Our Services</h1>
+            <p>Comprehensive solutions for modern hydroponic farming</p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SERVICES SECTION
+         ============================================ -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">What We Offer</h2>
+            <p class="section-subtitle">Complete hydroponic farming solutions tailored to your needs</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-seedling"></i></div>
+                    <h3>Hydroponic Systems</h3>
+                    <p>State-of-the-art hydroponic growing systems designed for maximum efficiency and yield with advanced monitoring capabilities.</p>
+                    <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-chalkboard-user"></i></div>
+                    <h3>Consulting & Training</h3>
+                    <p>Expert guidance and comprehensive training programs for farmers and entrepreneurs to master hydroponic farming techniques.</p>
+                    <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Maintenance & Support</h3>
+                    <p>24/7 technical support and regular maintenance services to ensure your hydroponic systems operate at peak performance.</p>
+                    <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-certificate"></i></div>
+                    <h3>Organic Certification</h3>
+                    <p>Complete certification assistance and guidance to ensure your produce meets all organic and international standards.</p>
+                    <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-leaf"></i></div>
+                    <h3>Greenhouse Installation</h3>
+                    <p>Professional design and installation of custom greenhouse structures optimized for your specific farming requirements.</p>
+                    <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-chart-bar"></i></div>
+                    <h3>Crop Management</h3>
+                    <p>Expert crop planning, monitoring, and management strategies to maximize yields and minimize resource waste.</p>
+                    <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         WHY CHOOSE US SECTION
+         ============================================ -->
+    <section class="why-choose" id="why-choose">
+        <div class="container">
+            <div class="why-choose-header">
+                <div class="why-choose-label"><i class="fas fa-leaf"></i>Why Choose Us</div>
+                <h2 class="why-choose-title">The Right Solution For Farming</h2>
+                <p class="why-choose-subtitle">We blend traditional farming wisdom with modern hydroponic technology to deliver reliable, efficient, and sustainable solutions tailored to every grower.</p>
+            </div>
+
+            <div class="why-choose-grid">
+                <div class="why-choose-left">
+                    <div class="feature-row reverse">
+                        <div class="feature-icon-box"><i class="fas fa-leaf"></i></div>
+                        <div class="feature-copy">
+                            <h3 class="feature-title">Quality &amp; Complete Products</h3>
+                            <p class="feature-desc">Premium-grade systems, nutrients, and components engineered for consistent yields and healthy growth cycles.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-row reverse">
+                        <div class="feature-icon-box"><i class="fas fa-sliders-h"></i></div>
+                        <div class="feature-copy">
+                            <h3 class="feature-title">Efficient &amp; Productive</h3>
+                            <p class="feature-desc">Optimized resource usage with smart controls that reduce water and power consumption while boosting output.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-row reverse">
+                        <div class="feature-icon-box"><i class="fas fa-chart-line"></i></div>
+                        <div class="feature-copy">
+                            <h3 class="feature-title">Assistance from Experts</h3>
+                            <p class="feature-desc">Direct access to agronomists and support specialists to configure, monitor, and fine-tune your setup.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="why-choose-center">
+                    <div class="why-choose-avatar">
+                        <img src="https://images.unsplash.com/photo-1595429035839-c99c298ffdde?w=600&h=600&fit=crop" alt="Farmer holding fresh vegetables" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                        <div class="placeholder" style="display: none;"><i class="fas fa-seedling"></i></div>
+                    </div>
+                </div>
+
+                <div class="why-choose-right">
+                    <div class="feature-row">
+                        <div class="feature-icon-box"><i class="fas fa-bell"></i></div>
+                        <div class="feature-copy">
+                            <h3 class="feature-title">Technology &amp; Data-Driven</h3>
+                            <p class="feature-desc">Real-time alerts, telemetry, and analytics so you can respond quickly and keep every crop on track.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-row">
+                        <div class="feature-icon-box"><i class="fas fa-users"></i></div>
+                        <div class="feature-copy">
+                            <h3 class="feature-title">Active Hydroponics Community</h3>
+                            <p class="feature-desc">Join a thriving network of growers sharing tips, wins, and proven playbooks to accelerate your success.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-row">
+                        <div class="feature-icon-box"><i class="fas fa-file-contract"></i></div>
+                        <div class="feature-copy">
+                            <h3 class="feature-title">After Sales &amp; Maintenance Service</h3>
+                            <p class="feature-desc">Comprehensive install, maintenance, and lifecycle support so your systems keep running at peak efficiency.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Hydropokit</h4>
+                <p>Leading provider of hydroponic solutions and sustainable farming technology for modern agriculture.</p>
+                <div class="social-icons" style="margin-top: 1rem;">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contact-us.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>📍 123 Agricultural Lane, Mumbai</li>
+                    <li>📞 +91-9876-543-210</li>
+                    <li>📧 support@hydropokit.com</li>
+                    <li>🕐 Mon-Fri 9AM-6PM IST</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p>Subscribe for latest updates and news about hydroponics.</p>
+                <div class="footer-newsletter">
+                    <input type="email" placeholder="Your email..." required>
+                    <button type="submit">Subscribe</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Hydropokit. All rights reserved. | <a href="#" style="color: inherit;">Privacy Policy</a> | <a href="#" style="color: inherit;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        // Dark/Light Mode Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            updateThemeButton(newTheme);
+        }
+
+        function updateThemeButton(theme) {
+            const btn = document.querySelector('.theme-toggle');
+            const icon = btn.querySelector('i');
+            const text = btn.querySelector('span');
+            
+            if (theme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                text.textContent = 'Light Mode';
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                text.textContent = 'Dark Mode';
+            }
+        }
+
+        // Load saved theme on page load
+        window.addEventListener('load', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+            updateThemeButton(savedTheme);
+        });
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+
+        // Close menu when link is clicked
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
